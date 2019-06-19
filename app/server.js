@@ -1,6 +1,6 @@
 // =============================================================
 const express = require("express");
-const path = require("path");
+
 
 
 
@@ -22,6 +22,7 @@ app.use(express.json());
 // =============================================================
 app.use('/api/friends', require('./routing/apiRoutes'))
 app.use('/', require('./routing/htmlRoutes'))
+
 
 
 
