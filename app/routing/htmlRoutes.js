@@ -1,28 +1,32 @@
 // *********************************************************************************
 // html-routes.js - this file offers a set of routes for sending users to the various html pages
 // *********************************************************************************
-
 // Dependencies
 // =============================================================
-var path = require("path");
+
+
+const express = require('express')
+const router = express.Router()
+const path = require("path");
 
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+// module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads view.html
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+  router.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/home.html'));
   });
 
   // add route loads the add.html page,
   // where users can enter new characters to the db
-  app.get("/survey", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
+  router.get("/survey", function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/'));
   });
 
 
-};
+
+  module.exports = router

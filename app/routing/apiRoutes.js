@@ -1,25 +1,74 @@
+//Dependecies
+const express = require('express')
+const uuid = require('uuid')
+const router = express.Router()
+const friends = require('../data/friends')
 
-  // var friend = require("../data/friends.js");
-  // Displays all friends
+router.get('/', (req, res) => {
+  res.json(friends)
+})
 
-  module.exports = function (app) {
-  app.get("/api/friends", function(req, res) {
-    return res.json(users);
-  });
-  
- 
-  // Create New Characters - takes in JSON input
-  app.post("/api/friends", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newUser = req.body;
-  
+
+//***Get Single friend */
+router.get('/:id', (req, res) => {
+    const found = friends.some(friend => friend.id === parseInt(req.params.id));
+    if (found) {
+        res.json(friends.filter(friend => friend.id === parseInt(req.params.id)));
+    } else {
+        res.status(400).json({ msg: `No friend with the id of ${req.params.id}`});
+    }
+    console.log('single mem')
     
-  
-    console.log(newUser);
-  
-    users.push(newUser);
-  
-    res.json(newUser);
-  });
-}
+});
+
+router.post('/', (req, res) => {
+    const newFriend = {
+        id: uuid.v4(),
+        name: req.body.name,
+    }
+
+    if(!newFriend.name){
+        return res.status(400).json({msg: 'Please include a name'});
+    } 
+    friends.push(newFriend);
+    res.json(friends)
+
+});
+//Update friend
+router.put('/:id', (req, res) => {
+    const found = friends.some(friend => friend.id === parseInt(req.params.id));
+    if (found) {
+        const updFriend = req.body;
+        friends.forEach(friend => {
+            if(friend.id === parseInt(req.params.id)) {
+                friend.name = updFriend.name ? updFriend.name: friend.name;
+
+                res.json({ msg: `friend updated:${friend.name}`})
+            }
+        });
+    } else {
+        res.status(400).json({ msg: `No friend with the id of ${req.params.id}`});
+    }
+    console.log('single mem')
+    
+});
+
+router.delete('/:id', (req, res) => {
+    const found = friends.some(friend => friend.id === parseInt(req.params.id));
+
+    if (found) {
+        res.json({
+            msg: `friend ${req.params.id} Deleted`, 
+            friends: friends.filter(friend => friend.id !== parseInt(req.params.id))
+        });
+    } else {
+        res.status(400).json({ msg: `No friend with the id of ${req.params.id}`});
+    }
+    console.log('single mem')
+    
+});
+
+
+
+
+module.exports = router

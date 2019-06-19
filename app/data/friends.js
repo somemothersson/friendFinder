@@ -1,7 +1,7 @@
-let users = [
+let friends = [
     {
-        name:"Ahmed",
-        photo:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        name:"Sun Ra",
+        photo:"https://www.facebook.com/774928499186006/photos/2493461000666072/",
         scores:[
             5,
             1,
@@ -17,4 +17,5 @@ let users = [
       }
     
   ];
-  
+
+  module.exports = friends
