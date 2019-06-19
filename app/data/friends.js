@@ -1,3 +1,4 @@
+//Friends Stores our Date, 
 let friends = [
     {
         name:"Sun Ra",
