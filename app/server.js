@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Static Route
-app.use(express.static("./public")
+app.use(express.static("./public"));
 // API and HTM Routes
 // =============================================================
 app.use('/api/friends', require('./routing/apiRoutes'))
