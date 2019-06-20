@@ -17,17 +17,6 @@ router.post('/', (req, res) => {
 
 });
 
-//*** EXTRA Get Data of Friend by Name*/
-router.get('/:name', (req, res) => {
-  const found = friends.some(friend => friend.name === parseInt(req.params.name));
-  if (found) {
-      res.json(friends.filter(friend => friend.name === parseInt(req.params.name)));
-  } else {
-      res.status(400).json({ msg: `No friend with the id of ${req.params.name}`});
-  }
-  console.log('single mem')
-  
-});
 
 
 module.exports = router
