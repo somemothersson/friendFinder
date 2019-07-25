@@ -154,7 +154,7 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="./FriendFinder-syrvey_files/3435aa3.jpg" alt="">
+          <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -164,47 +164,12 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-
-    // Capture the form inputs
-    $("#submit").on("click", function (event) {
-      event.preventDefault();
-
-
-      var friendData = {
-        name: $("#name").val(),
-        photo: $("#photo").val(),
-        scores: [
-          $("#q1").val(),
-          $("#q2").val(),
-          $("#q3").val(),
-          $("#q4").val(),
-          $("#q5").val(),
-          $("#q6").val(),
-          $("#q7").val(),
-          $("#q8").val(),
-          $("#q9").val(),
-        ]
-      };
-
-      // AJAX post the data to the friends API.
-      $.post("/api/friends", userData, function (data) {
-
-        // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-        $("#match-name").text(data.name);
-        $("#match-img").attr("src", data.photo);
-
-        // Show the modal with the best match
-        $("#results-modal").modal("toggle");
-
-      });
-    });
+  
   </script>
+  <script src="assets/js/app.js"></script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
