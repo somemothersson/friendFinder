@@ -2,7 +2,7 @@
   $("#submit").on("click", function (event) {
     event.preventDefault();
     console.log("clicked")
- 
+    
 
     var scoreArray = [
       $("#q1 input[type='radio']:checked").val(),
@@ -37,15 +37,20 @@
 
       for (i=0; i <data.length; i++){
       
+
         var mName = data[i].name
         var mPhoto = data[i].photo
         var mScore = data[i].score.reduce((sum, val, i) => sum + (val % usrScore[i]), 0)
+
+        //I cant get the alogrithm to work
+
+        
         // var compatability = mScore.reduce((sum, val, i) => sum + (val % usrScore[i]), 0)
         console.log(mName, mScore)
-        if(mScore <= 0)
+       
       }
 
-     
+      
       // Grab the result from the AJAX post so that the best match's name and photo are displayed.
       $("#match-name").text(data[0].name);
       $("#match-img").attr("src", data[0].photo);
